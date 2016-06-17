@@ -1,0 +1,27 @@
+#!/bin/sh
+
+if type -p java; then
+    JAVA_CMD=java
+elif [ -n "$JAVA_HOME" -a -x "$JAVA_HOME/bin/java" ]; then
+    JAVA_CMD="$JAVA_HOME/bin/java"
+else
+    echo "java not found"
+    exit 1;
+fi
+
+if [[ "${JAVA_CMD}" ]]; then
+    JAVA_VERSION=$("${JAVA_CMD}" -version 2>&1 | awk -F '"' '/version/ {print $2}')
+    if [[ "${JAVA_VERSION}" < "1.7" ]]; then
+	    echo "java runtime 1.7 or higher required"
+	    exit 1;
+    fi
+fi
+
+IOT_FUSE_BASE=`cd $(dirname $0) 2>/dev/null && cd .. && pwd`;
+exec ${JAVA_CMD} \
+  -classpath "${IOT_FUSE_BASE}/lib/*" \
+  ${JVM_ARGS} \
+  com.amazonaws.services.iot.client.fuse.Mount \
+  -- \
+  "$@" \
+  ;
