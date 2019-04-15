@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.amazonaws</groupId>
 	<artifactId>aws-iot-fuse</artifactId>
-	<version>0.9.1</version>
+	<version>0.9.2</version>
 	<name>AWS IoT FUSE Client</name>
 	<description>The AWS IoT FUSE client provides an alternative way of accessing the AWS IoT service through UNIX filesystem interface.</description>
 	<url>https://aws.amazon.com/iot/sdk</url>
