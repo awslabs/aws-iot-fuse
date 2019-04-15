@@ -43,6 +43,12 @@ $ mvn clean package
 
 Binary packages will be created under the ```target``` directory after the build.
 
+### Extract binaries
+To use the client, first extract the binaries to an installation directory.
+The following creates the "aws-iot-fuse-0.9.1" installation directory under the source root
+```sh
+$ tar -xvzf target/aws-iot-fuse-0.9.1-binary.tar.gz
+```
 ## Use the Client
 
 To mount the FUSE filesystem, you will need an AWS Identity and Access Management (IAM) user, new or existing, who has access to the AWS IoT service. The IAM user must be attached with a policy that enables the user to access the AWS IoT
